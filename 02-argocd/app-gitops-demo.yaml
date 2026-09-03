@@ -1,18 +1,18 @@
-apiVersion: argoproj.io/v1alpha1
+﻿apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: gitops-demo
   namespace: argocd
   finalizers:
-    # Limpia los recursos del clúster cuando se borra la Application
+    # Limpia los recursos del clÃºster cuando se borra la Application
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
     # REEMPLAZA con la URL de tu repositorio
-    repoURL: https://github.com/LauraCortes/crossplane_test
+    repoURL: https://github.com/lasarmientogonzalez-spec/gitops-poc-arti4219.git
     targetRevision: main
-    path: 01-crossplane          # Directorio donde están los manifiestos
+    path: 01-crossplane          # Directorio donde estÃ¡n los manifiestos
   destination:
     server: https://kubernetes.default.svc
     namespace: default
@@ -23,4 +23,4 @@ spec:
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
-      - SkipDryRunOnMissingResource=true   # Permite sync aunque haya CRDs aún no instalados
+      - SkipDryRunOnMissingResource=true   # Permite sync aunque haya CRDs aÃºn no instalados
